@@ -1,20 +1,20 @@
 # Laravel PHP Framework
 
 
-25. Curso Avanzado Laravel 5.2 :  Store Procedure  
+31. Curso Avanzado Laravel 5.2 :  Select2 
 ==================================================
 
 Nombre Proyecto
 ===============
-appmarket-lab
+appmarket
 
 
 Instalación
 ============
 Después de descargar el proyecto entramos a este.
-La base de datos esta en al carpeta /db
+La base de datos esta en al carpeta /public/db
 
-$ cd appmarket-lab
+$ cd appmarket
 Ejecutamos el siguiente comando.
 
 $ composer install
@@ -24,7 +24,7 @@ Para terminar solo debemos generar una key para nuestra App
 =========================================================
  $ php artisan key:generate
 
-Ahora podemos ejecutar el proyecto appmarket-lab.
+Ahora podemos ejecutar el proyecto appmarket
 
 $ php artisan serve
 

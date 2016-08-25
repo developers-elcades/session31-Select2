@@ -3,9 +3,11 @@
 namespace Market\Http\Controllers\Product;
 
 use Illuminate\Http\Request;
-
+use Market\Models\Product\Mark;
 use Market\Http\Requests;
 use Market\Http\Controllers\Controller;
+use Market\Http\Requests\Mark\MarkCreateRequest;
+use Market\Http\Requests\Mark\MarkUpdateRequest;
 use Session;
 
 
@@ -32,6 +34,15 @@ class MarkController extends Controller
     }
 
 
+    public function listall()
+    {
+        $mark = Mark::
+         select('id','name')
+                 ->paginate(5);
+        return View('mark/listall')->with('marks',$mark);
+
+    }
+
     public function create()
     {
         //
@@ -41,8 +52,24 @@ class MarkController extends Controller
     }
 
 
-    public function store(Request $request)
+    public function store( MarkCreateRequest $request)
     {
+        
+        if ($request->ajax())
+        {
+                $result = Mark::create($request->all());
+
+                if ($result){
+                    Session::flash('save','Se ha creado correctamente');
+                    return response()->json(['success'=>'true']);
+                } 
+                else
+                {
+                  return response()->json(['success'=>'false']);  
+                }
+
+
+        }
 
 
     }

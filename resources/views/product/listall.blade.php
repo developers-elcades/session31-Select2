@@ -3,7 +3,8 @@
     <th>Nombre</th>
     <th>Precio</th>
     <th>Marca</th>
-    <th>Acción</th>
+    <th>Imagen</th>
+     <th>Acción</th>
     </thead>
     <tbody>
     @foreach($products as $product)
@@ -11,6 +12,7 @@
             <td>{{$product->product}}</td>
             <td>{{$product->price}}</td>
             <td>{{$product->mark}}</td>
+            <td><a href="{{url('photo',$product->id)}}"><img src="images/products/{{$product->image}}" alt="" style="width: 30px;height: 44px;">[Editar]</a></td>            
             <td>
                 <a href="{{route('product.edit',$product->id)}}">[Editar]</a>
                 <a href="{{route('product.show',$product->id)}}">[Eliminar]</a></td>
@@ -21,5 +23,5 @@
 
 </table>
 <div class="text-center">
-   {!!$products->links()!!}
+    {!!$products->links()!!}
 </div>

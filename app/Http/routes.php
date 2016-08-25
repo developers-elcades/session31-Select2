@@ -31,23 +31,23 @@
    Route::group(['middleware' => ['web']], function () {
        //
 
-
-
       Route::auth();
-
       Route::get('/home', 'HomeController@index');
       route::get('dashboard','Desktop\DashboardController@index');
+
+      //Marcas
       route::resource('mark','Product\MarkController');
+      route::get('listallmark/{page?}','Product\MarkController@listall');
+      
+      // Productos
       route::resource('product','Product\ProductController');
       route::get('listall/{page?}','Product\ProductController@listall');
       route::get('modelweb','Desktop\DashboardController@modelweb');
-      Route::group(['prefix'=>'admin','middleware'=>['auth','admin']],function (){
-            route::get('demo',['as'=>'demo','uses'=>'DemoController@index']);
-      });
 
-
-      // STORE PROCEDURE
-      route::get('storeprocedure','Product\ProductController@storeprocedure');
+      /* --------- upload image  ---------- */
+      route::get('photo/{page?}','Product\ProductController@photo');
+      Route::post('photoproduct','Product\ProductController@update_photo');
+      /* --------- upload image  ---------- */
       
 
    });

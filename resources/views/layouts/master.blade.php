@@ -11,18 +11,21 @@
     <!-- Bootstrap -->
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> --}}    
+    {!!Html::script('select2-4.0.3/vendor/jquery-2.1.0.js')!!}
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     {!!Html::style('css/bootstrap.min.css')!!}
     {!!Html::style('css/navbar-fixed-top.css')!!}
     {!!Html::script('js/bootstrap.min.js')!!}
+    {!!Html::script('select2-4.0.3/dist/js/select2.js')!!}
+    {!!Html::style('select2-4.0.3/dist/css/select2.css',['rel'=>"stylesheet"])!!}
 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
+
+    
+{{-- <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+ --}}
+
   </head>
   <body>
      <!-- Fixed navbar -->

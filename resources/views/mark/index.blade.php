@@ -1,54 +1,85 @@
 @extends('layouts.master')
 
-@section('title','Lista de Productos')
+@section('title','Lista de Marcas')
 
 @section('content')
 
+     
+  <ol class="breadcrumb">
+     <li><a href="{{url('dashboard')}}">Escritorio</a></li>
+     <li class="active">Marcas</li>
+   </ol>
+ 
 
-        {{--if (Session::has('tabla')) {--}}
-        {{--$user = Session::get('tabla');--}}
-        {{--echo $user['name'];--}}
-        {{--}--}}
+   <div class="page-header">
+     <h1>Marcas <small>Actualizados hasta hoy</small></h1>
+   </div>
 
-        {{--@foreach(Session::get('tabla') as $row)--}}
-        {{--<ul>--}}
-            {{--<li>{{ $row }} </li>--}}
-        {{--</ul>--}}
-        {{--@endforeach--}}
+   <div class="row">
+     <div class="col-md-8">
 
-
-
-
-
-        @if (Session::has('tabla'))
-
-            @foreach(Session::get('tabla') as $rows)
-
-                {{ $rows ['name'] }} <br>
-
-            @endforeach
-
-        @endif
-
+       @include('partials.messages') 
+        <div class="panel panel-default">
+          <div class="panel-heading">
+             Lista
+             <p class="navbar-text navbar-right" style=" margin-top: 1px;">
+                <button type="button" id='nuevo'  name='nuevo' class="btn btn-warning navbar-btn" style="margin-bottom: 1px; margin-top: -5px;margin-right: 8px;padding: 3px 20px;">Nuevo</button>
+             </p>
+           </div>
+          <div class="panel-body">
+               <div id="list-mark"></div>
 
 
+          </div>
+        </div>
 
 
-    {{--@if (Session::has('tabla'))--}}
+     </div>
+   </div>
 
-        {{--@foreach(Session::get('tabla') as $row)--}}
-            {{--{{ $row }}--}}
-        {{--@endforeach--}}
-    {{--@endif--}}
+<script  type="text/javascript">
 
 
-
-        {{--@foreach($_SESSION['tabla'] as $row)--}}
-
-            {{--{{ $row['name'] }}<br>--}}
-
-        {{--@endforeach--}}
+    $(document).ready(function(){
+        listmark();
+    });
 
 
+    $(document).on("click",".pagination li a",function(e) {
+        e.preventDefault();
 
+        var url = $(this).attr("href");
+
+        $.ajax({
+            type:'get',
+            url:url,
+            success: function(data){
+                $('#list-mark').empty().html(data);
+            }
+        });
+
+    });
+
+
+
+
+    $("#nuevo").click(function(event)
+  {
+      document.location.href = "{{ route('mark.create')}}";
+  });
+
+  var listmark = function()
+  {
+      $.ajax({
+          type:'get',
+          url:'{{ url('listallmark')}}',
+          success: function(data){
+              $('#list-mark').empty().html(data);
+          }
+      });
+  }
+
+
+</script>
+  
 @endsection

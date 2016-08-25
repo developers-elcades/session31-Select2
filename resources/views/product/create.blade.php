@@ -48,6 +48,8 @@
               <button type="button" id='cancelar'  name='cancelar' class="btn btn-info btn-sm m-t-10" >Cancelar</button>             
           {!!Form::close()!!}
 
+           {!! form::label() !!}
+
 
 
 
